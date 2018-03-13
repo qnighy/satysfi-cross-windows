@@ -9,8 +9,10 @@ else
   echo "Error: unknown \$SATYSFI_TARGET = $SATYSFI_TARGET" >&2
 fi
 
-export LDFLAGS="-L$HOME/$ARCH/lib"
-export CPPFLAGS="-I$HOME/$ARCH/include"
+# export LDFLAGS="-L$HOME/$ARCH/lib"
+# export CPPFLAGS="-I$HOME/$ARCH/include"
+export LDFLAGS=""
+export CPPFLAGS=""
 
 cd SATySFi
 patch -p1 < ../files/patches/otfm-dev-null-windows.patch

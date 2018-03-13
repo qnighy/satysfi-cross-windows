@@ -32,41 +32,56 @@ wget "http://www.ijg.org/files/jpegsrc.v9c.tar.gz"
 wget "http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz"
 wget "https://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.gz"
 
-export LDFLAGS="-L$HOME/$ARCH/lib"
-export CPPFLAGS="-I$HOME/$ARCH/include"
+# export LDFLAGS="-L$HOME/$ARCH/lib"
+# export CPPFLAGS="-I$HOME/$ARCH/include"
+export LDFLAGS=""
+export CPPFLAGS=""
 unset CC
 unset LD
 
 tar zxf "zlib-1.2.11.tar.gz"
 cd "zlib-1.2.11"
-make -f win32/Makefile.gcc PREFIX="$ARCH-" BINARY_PATH="$HOME/$ARCH/bin" INCLUDE_PATH="$HOME/$ARCH/include" LIBRARY_PATH="$HOME/$ARCH/lib"
-make install -f win32/Makefile.gcc PREFIX="$ARCH-" BINARY_PATH="$HOME/$ARCH/bin" INCLUDE_PATH="$HOME/$ARCH/include" LIBRARY_PATH="$HOME/$ARCH/lib"
+# make -f win32/Makefile.gcc PREFIX="$ARCH-" BINARY_PATH="$HOME/$ARCH/bin" INCLUDE_PATH="$HOME/$ARCH/include" LIBRARY_PATH="$HOME/$ARCH/lib"
+# make install -f win32/Makefile.gcc PREFIX="$ARCH-" BINARY_PATH="$HOME/$ARCH/bin" INCLUDE_PATH="$HOME/$ARCH/include" LIBRARY_PATH="$HOME/$ARCH/lib"
+make -f win32/Makefile.gcc PREFIX="$ARCH-" BINARY_PATH="/usr/local/$ARCH/bin" INCLUDE_PATH="/usr/local/$ARCH/include" LIBRARY_PATH="/usr/local/$ARCH/lib"
+sudo make install -f win32/Makefile.gcc PREFIX="$ARCH-" BINARY_PATH="/usr/local/$ARCH/bin" INCLUDE_PATH="/usr/local/$ARCH/include" LIBRARY_PATH="/usr/local/$ARCH/lib"
 cd ..
 
 tar zxf "libpng-1.6.34.tar.gz"
 cd "libpng-1.6.34"
-./configure --prefix="$HOME/$ARCH" --host=$ARCH
+# ./configure --prefix="$HOME/$ARCH" --host=$ARCH
+# make
+# make install
+./configure --prefix="/usr/local/$ARCH" --host=$ARCH
 make
-make install
+sudo make install
 cd ..
 
 tar zxf "jpegsrc.v9c.tar.gz"
 cd "jpeg-9c"
-./configure --prefix="$HOME/$ARCH" --host=$ARCH
+# ./configure --prefix="$HOME/$ARCH" --host=$ARCH
+# make
+# make install
+./configure --prefix="/usr/local/$ARCH" --host=$ARCH
 make
-make install
+sudo make install
 cd ..
 
 tar zxf "bzip2-1.0.6.tar.gz"
 cd "bzip2-1.0.6"
 patch -p1 < ../.travis/bzip2-mingw-cross.patch
-make libbz2.a bzip2 bzip2recover PREFIX="$HOME/$ARCH" CC="$ARCH-gcc" AR="$ARCH-ar" RANLIB="$ARCH-ranlib"
-make install PREFIX="$HOME/$ARCH" CC="$ARCH-gcc" AR="$ARCH-ar" RANLIB="$ARCH-ranlib"
+# make libbz2.a bzip2 bzip2recover PREFIX="$HOME/$ARCH" CC="$ARCH-gcc" AR="$ARCH-ar" RANLIB="$ARCH-ranlib"
+# make install PREFIX="$HOME/$ARCH" CC="$ARCH-gcc" AR="$ARCH-ar" RANLIB="$ARCH-ranlib"
+make libbz2.a bzip2 bzip2recover PREFIX="/usr/local/$ARCH" CC="$ARCH-gcc" AR="$ARCH-ar" RANLIB="$ARCH-ranlib"
+sudo make install PREFIX="/usr/local/$ARCH" CC="$ARCH-gcc" AR="$ARCH-ar" RANLIB="$ARCH-ranlib"
 cd ..
 
 tar zxf "freetype-2.9.tar.gz"
 cd "freetype-2.9"
-./configure --prefix="$HOME/$ARCH" --host=$ARCH
+# ./configure --prefix="$HOME/$ARCH" --host=$ARCH
+# make
+# make install
+./configure --prefix="/usr/local/$ARCH" --host=$ARCH
 make
-make install
+sudo make install
 cd ..

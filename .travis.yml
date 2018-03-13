@@ -6,12 +6,14 @@ matrix:
     - env: SATYSFI_TARGET='windows32'
       os: linux
       dist: trusty
-      sudo: false
+      # sudo: false
+      sudo: required
       compiler: gcc
     - env: SATYSFI_TARGET='windows64'
       os: linux
       dist: trusty
-      sudo: false
+      # sudo: false
+      sudo: required
       compiler: gcc
 addons:
   apt:
