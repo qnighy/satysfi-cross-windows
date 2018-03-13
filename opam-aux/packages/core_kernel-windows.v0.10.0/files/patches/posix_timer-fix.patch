@@ -1,0 +1,18 @@
+diff --git a/src/config/discover.ml b/src/config/discover.ml
+index ef26121..e3c806e 100644
+--- a/src/config/discover.ml
++++ b/src/config/discover.ml
+@@ -31,12 +31,7 @@ let () =
+   in
+   C.main ~args ~name:"core_kernel" (fun c ->
+     let posix_timers =
+-      if C.c_test c posix_timers_code ~link_flags:["-lrt"] then
+-        Available { need_lrt = true }
+-      else if C.c_test c posix_timers_code then
+-        Available { need_lrt = false }
+-      else
+-        Not_available
++      Not_available
+     in
+ 
+     let ocaml_vars =
