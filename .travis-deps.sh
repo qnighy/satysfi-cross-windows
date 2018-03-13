@@ -22,7 +22,7 @@ eval `opam config env`
 echo '. "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null || true' >> ~/.bash_profile
 
 opam update
-opam install opam-installer
+opam install -y opam-installer
 
 
 
