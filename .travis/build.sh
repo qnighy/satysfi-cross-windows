@@ -16,7 +16,7 @@ opam install -y ocaml-windows
 
 cat >$HOME/.opam/$OCAMLVER/windows-sysroot/bin/ocamlmklib <<EOD
 #!/bin/sh
-$HOME/.opam/$OCAMLVER/bin/ocamlrun "$HOME/.opam/$OCAMLVER/windows-sysroot/bin/ocamlmklib.exe" -L/usr/local/$ARCH/lib "$@"
+$HOME/.opam/$OCAMLVER/bin/ocamlrun "$HOME/.opam/$OCAMLVER/windows-sysroot/bin/ocamlmklib.exe" -L/usr/local/$ARCH/lib "\$@"
 EOD
 
 # export LDFLAGS="-L$HOME/$ARCH/lib"
