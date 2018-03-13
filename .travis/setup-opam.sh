@@ -4,6 +4,7 @@ set -uexv
 . .travis/common.sh
 
 wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin $OCAMLVER
+/usr/local/bin/opam init --comp $OCAMLVER
 cat >> ~/.ocamlinit <<EOD
 let () =
   try Topdirs.dir_directory (Sys.getenv "OCAML_TOPLEVEL_PATH")
