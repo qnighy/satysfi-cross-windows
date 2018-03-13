@@ -27,6 +27,7 @@ opam update
 
 wget "https://download.sourceforge.net/libpng/zlib-1.2.11.tar.gz"
 wget "https://download.sourceforge.net/libpng/libpng-1.6.34.tar.gz"
+wget "http://www.ijg.org/files/jpegsrc.v9c.tar.gz"
 
 export LDFLAGS="-L$HOME/$ARCH/lib"
 export CPPFLAGS="-I$HOME/$ARCH/include"
@@ -35,9 +36,18 @@ tar zxf "zlib-1.2.11.tar.gz"
 cd "zlib-1.2.11"
 make -f win32/Makefile.gcc PREFIX="$ARCH-" BINARY_PATH="$HOME/$ARCH/bin" INCLUDE_PATH="$HOME/$ARCH/include" LIBRARY_PATH="$HOME/$ARCH/lib"
 make install -f win32/Makefile.gcc PREFIX="$ARCH-" BINARY_PATH="$HOME/$ARCH/bin" INCLUDE_PATH="$HOME/$ARCH/include" LIBRARY_PATH="$HOME/$ARCH/lib"
+cd ..
 
 tar zxf "libpng-1.6.34.tar.gz"
 cd "libpng-1.6.34"
 ./configure --prefix="$HOME/$ARCH" --host=$ARCH
 make
 make install
+cd ..
+
+tar zxf "jpegsrc.v9c.tar.gz"
+cd "jpeg-9c"
+./configure --prefix="$HOME/$ARCH" --host=$ARCH
+make
+make install
+cd ..
