@@ -13,7 +13,7 @@ fi
 
 cat >$HOME/bin/$ARCH-gcc <<EOD
 #!/bin/sh
-/usr/bin/$ARCH-gcc -L/usr/local/$ARCH/lib -I/usr/local/$ARCH/include "$@"
+/usr/bin/$ARCH-gcc -L/usr/local/$ARCH/lib -I/usr/local/$ARCH/include "\$@"
 EOD
 chmod +x $HOME/bin/$ARCH-gcc
 
