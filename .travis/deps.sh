@@ -11,6 +11,12 @@ else
   echo "Error: unknown \$SATYSFI_TARGET = $SATYSFI_TARGET" >&2
 fi
 
+cat >$HOME/bin/$ARCH-gcc <<EOD
+#!/bin/sh
+/usr/bin/$ARCH-gcc -L/usr/local/$ARCH/lib -I/usr/local/$ARCH/include "$@"
+EOD
+chmod +x $HOME/bin/$ARCH-gcc
+
 wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sh -s $HOME/bin $OCAMLVER
 cat >> ~/.ocamlinit <<EOD
 let () =
