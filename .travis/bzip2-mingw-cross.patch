@@ -1,0 +1,42 @@
+bzip2-1.0.6 のみに存在: blocksort.o
+bzip2-1.0.6 のみに存在: bzip2
+diff -ru bzip2-1.0.6.orig/bzip2.c bzip2-1.0.6/bzip2.c
+--- bzip2-1.0.6.orig/bzip2.c	2018-03-13 18:39:07.403914162 +0900
++++ bzip2-1.0.6/bzip2.c	2018-03-13 18:39:32.007607054 +0900
+@@ -128,7 +128,7 @@
+ #if BZ_LCCWIN32
+ #   include <io.h>
+ #   include <fcntl.h>
+-#   include <sys\stat.h>
++#   include <sys/stat.h>
+ 
+ #   define NORETURN       /**/
+ #   define PATH_SEP       '\\'
+bzip2-1.0.6 のみに存在: bzip2.o
+bzip2-1.0.6 のみに存在: bzip2recover
+diff -ru bzip2-1.0.6.orig/bzip2recover.c bzip2-1.0.6/bzip2recover.c
+--- bzip2-1.0.6.orig/bzip2recover.c	2018-03-13 18:39:07.403914162 +0900
++++ bzip2-1.0.6/bzip2recover.c	2018-03-13 18:43:04.969080775 +0900
+@@ -37,7 +37,7 @@
+ */
+ #ifdef __GNUC__
+    typedef  unsigned long long int  MaybeUInt64;
+-#  define MaybeUInt64_FMT "%Lu"
++#  define MaybeUInt64_FMT "%I64u"
+ #else
+ #ifdef _MSC_VER
+    typedef  unsigned __int64  MaybeUInt64;
+bzip2-1.0.6 のみに存在: bzip2recover.o
+bzip2-1.0.6 のみに存在: bzlib.o
+bzip2-1.0.6 のみに存在: compress.o
+bzip2-1.0.6 のみに存在: crctable.o
+bzip2-1.0.6 のみに存在: decompress.o
+bzip2-1.0.6 のみに存在: huffman.o
+bzip2-1.0.6 のみに存在: libbz2.a
+bzip2-1.0.6 のみに存在: randtable.o
+bzip2-1.0.6 のみに存在: sample1.rb2
+bzip2-1.0.6 のみに存在: sample1.tst
+bzip2-1.0.6 のみに存在: sample2.rb2
+bzip2-1.0.6 のみに存在: sample2.tst
+bzip2-1.0.6 のみに存在: sample3.rb2
+bzip2-1.0.6 のみに存在: sample3.tst
