@@ -31,6 +31,8 @@ wget "http://www.ijg.org/files/jpegsrc.v9c.tar.gz"
 
 export LDFLAGS="-L$HOME/$ARCH/lib"
 export CPPFLAGS="-I$HOME/$ARCH/include"
+unset CC
+unset LD
 
 tar zxf "zlib-1.2.11.tar.gz"
 cd "zlib-1.2.11"
