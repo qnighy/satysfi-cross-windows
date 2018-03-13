@@ -23,6 +23,4 @@ addons:
 install:
   - ./.travis-deps.sh
 script:
-  - opam repository add windows opam-cross-windows
-  - opam repository add satysfi-aux ./opam-aux
-  - opam pin -y add satysfi-windows .
+  - ./.travis.sh
