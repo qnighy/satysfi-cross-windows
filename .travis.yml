@@ -19,7 +19,7 @@ addons:
       - gcc-mingw-w64-x86-64
       - gcc-mingw-w64-i686
 install:
-  - ./travis-deps.sh
+  - ./.travis-deps.sh
 script:
   - opam repository add windows opam-cross-windows
   - opam repository add satysfi-aux ./opam-aux
