@@ -7,6 +7,7 @@ dev-repo: "git+https://github.com/janestreet/core_kernel.git"
 license: "Apache-2.0"
 patches: [
   "patches/no-endian-header.patch"
+  "patches/sixtyfour-fix.patch"
 ]
 build: [
   ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot" "-p" "core_kernel" "-j" jobs "-x" "windows"]
