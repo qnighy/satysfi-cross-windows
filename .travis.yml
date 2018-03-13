@@ -24,6 +24,7 @@ addons:
       - gcc-multilib
       - aspcud
 install:
+  - ./.travis/setup-opam.sh
   - ./.travis/deps.sh
 script:
   - ./.travis/build.sh
