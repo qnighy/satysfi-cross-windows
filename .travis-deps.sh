@@ -28,6 +28,8 @@ opam update
 wget "https://download.sourceforge.net/libpng/zlib-1.2.11.tar.gz"
 wget "https://download.sourceforge.net/libpng/libpng-1.6.34.tar.gz"
 wget "http://www.ijg.org/files/jpegsrc.v9c.tar.gz"
+wget "http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz"
+wget "https://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.gz"
 
 export LDFLAGS="-L$HOME/$ARCH/lib"
 export CPPFLAGS="-I$HOME/$ARCH/include"
@@ -49,6 +51,20 @@ cd ..
 
 tar zxf "jpegsrc.v9c.tar.gz"
 cd "jpeg-9c"
+./configure --prefix="$HOME/$ARCH" --host=$ARCH
+make
+make install
+cd ..
+
+tar zxf "bzip2-1.0.6.tar.gz"
+cd "bzip2-1.0.6"
+patch -p1 < ../.travis/bzip2-mingw-cross.patch
+make libbz2.a bzip2 bzip2recover PREFIX="$HOME/$ARCH" CC="$ARCH-gcc" AR="$ARCH-ar" RANLIB="$ARCH-ranlib"
+make install PREFIX="$HOME/$ARCH" CC="$ARCH-gcc" AR="$ARCH-ar" RANLIB="$ARCH-ranlib"
+cd ..
+
+tar zxf "freetype-2.9.tar.gz"
+cd "freetype-2.9"
 ./configure --prefix="$HOME/$ARCH" --host=$ARCH
 make
 make install
