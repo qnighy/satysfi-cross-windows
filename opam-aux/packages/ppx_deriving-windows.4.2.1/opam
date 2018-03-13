@@ -35,6 +35,7 @@ depends: [
   "ppx_derivers"
   "ppx_tools-windows"  {>= "4.02.3"}
   "result"
+  "result-windows"
   "ounit"      {test}
   "ocaml-windows"
 ]
