@@ -1,0 +1,26 @@
+language: c
+env:
+  - OCAML_VERSION=4.06
+matrix:
+  include:
+    - env: SATYSFI_TARGET='windows32'
+      os: linux
+      dist: trusty
+      sudo: false
+      compiler: gcc
+    - env: SATYSFI_TARGET='windows64'
+      os: linux
+      dist: trusty
+      sudo: false
+      compiler: gcc
+addons:
+  apt:
+    packages:
+      - gcc-mingw-w64-x86_64
+      - gcc-mingw-w64-i686
+install:
+  - ./travis-deps.sh
+script:
+  - opam repository add windows opam-cross-windows
+  - opam repository add satysfi-aux ./opam-aux
+  - opam pin -y add satysfi-windows .
