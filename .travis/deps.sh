@@ -35,7 +35,6 @@ opam install -y opam-installer
 wget "https://download.sourceforge.net/libpng/zlib-1.2.11.tar.gz"
 wget "https://download.sourceforge.net/libpng/libpng-1.6.34.tar.gz"
 wget "http://www.ijg.org/files/jpegsrc.v9c.tar.gz"
-wget "http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz"
 wget "https://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.gz"
 
 # export LDFLAGS="-L$HOME/$ARCH/lib"
@@ -73,21 +72,12 @@ make
 sudo make install
 cd ..
 
-tar zxf "bzip2-1.0.6.tar.gz"
-cd "bzip2-1.0.6"
-patch -p1 < ../.travis/bzip2-mingw-cross.patch
-# make libbz2.a bzip2 bzip2recover PREFIX="$HOME/$ARCH" CC="$ARCH-gcc" AR="$ARCH-ar" RANLIB="$ARCH-ranlib"
-# make install PREFIX="$HOME/$ARCH" CC="$ARCH-gcc" AR="$ARCH-ar" RANLIB="$ARCH-ranlib"
-make libbz2.a bzip2 bzip2recover PREFIX="/usr/local/$ARCH" CC="$ARCH-gcc" AR="$ARCH-ar" RANLIB="$ARCH-ranlib"
-sudo make install PREFIX="/usr/local/$ARCH" CC="$ARCH-gcc" AR="$ARCH-ar" RANLIB="$ARCH-ranlib"
-cd ..
-
 tar zxf "freetype-2.9.tar.gz"
 cd "freetype-2.9"
-# ./configure --prefix="$HOME/$ARCH" --host=$ARCH
+# ./configure --prefix="$HOME/$ARCH" --host=$ARCH --without-bzip2 --without-harfbuzz
 # make
 # make install
-./configure --prefix="/usr/local/$ARCH" --host=$ARCH
+./configure --prefix="/usr/local/$ARCH" --host=$ARCH --without-bzip2 --without-harfbuzz
 make
 sudo make install
 cd ..
