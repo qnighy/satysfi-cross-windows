@@ -18,6 +18,8 @@ addons:
     packages:
       - gcc-mingw-w64-x86-64
       - gcc-mingw-w64-i686
+      - libc6-dev-i386
+      - aspcud
 install:
   - ./.travis-deps.sh
 script:
