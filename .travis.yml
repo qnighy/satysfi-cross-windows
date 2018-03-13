@@ -22,6 +22,6 @@ addons:
       - gcc-multilib
       - aspcud
 install:
-  - ./.travis-deps.sh
+  - ./.travis/deps.sh
 script:
-  - ./.travis.sh
+  - ./.travis/build.sh
