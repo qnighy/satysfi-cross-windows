@@ -1,0 +1,14 @@
+diff --git a/src/otfm.ml b/src/otfm.ml
+index 7b33143..620ea65 100644
+--- a/external/otfm/src/otfm.ml
++++ b/external/otfm/src/otfm.ml
+@@ -7,7 +7,8 @@
+ 
+ 
+ let debugfmt =
+-  Format.formatter_of_out_channel (open_out "/dev/null")
++  let dev_null = if Sys.os_type = "Win32" then "NUL" else "/dev/null" in
++  Format.formatter_of_out_channel (open_out dev_null)
+ 
+ let fmtgen  = debugfmt
+ let fmtGSUB = debugfmt
