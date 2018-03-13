@@ -41,6 +41,7 @@ cd ..
 tar zxf "libpng-1.6.34.tar.gz"
 cd "libpng-1.6.34"
 ./configure --prefix="$HOME/$ARCH" --host=$ARCH
+cat libtool # DEBUG
 make
 make install
 cd ..
