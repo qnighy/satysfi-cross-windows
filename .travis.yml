@@ -15,10 +15,8 @@ matrix:
       compiler: gcc
 addons:
   apt:
-    sources:
-      - ubuntu-toolchain-r-test
     packages:
-      - gcc-mingw-w64-x86_64
+      - gcc-mingw-w64-x86-64
       - gcc-mingw-w64-i686
 install:
   - ./travis-deps.sh
