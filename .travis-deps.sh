@@ -1,5 +1,5 @@
 #!/bin/bash
-set -uex
+set -uexv
 
 if [[ "$SATYSFI_TARGET" = "windows32" ]]; then
   ARCH="i686-w64-mingw32"
