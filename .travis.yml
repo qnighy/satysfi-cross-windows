@@ -24,6 +24,6 @@ addons:
 install:
   - ./.travis/setup-opam.sh
   - ./.travis/setup-mxe.sh
-  - ./.travis/deps.sh
+  - ./.travis/setup-opam-cross-windows.sh
 script:
   - ./.travis/build.sh
