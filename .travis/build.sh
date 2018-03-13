@@ -12,7 +12,7 @@ else
 fi
 
 opam repository -y add windows ./opam-cross-windows
-opam install ocaml-windows
+opam install -y ocaml-windows
 
 cat >$HOME/.opam/$OCAMLVER/windows-sysroot/bin/ocamlmklib <<EOD
 #!/bin/sh
