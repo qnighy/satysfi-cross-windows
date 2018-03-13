@@ -1,0 +1,21 @@
+language: c
+os: linux
+dist: trusty
+sudo: required
+compiler: gcc
+matrix:
+  include:
+    - env: SATYSFI_TARGET='windows32'
+    - env: SATYSFI_TARGET='windows64'
+addons:
+  apt:
+    packages:
+      - libc6-dev-i386
+      - gcc-multilib
+      - aspcud
+install:
+  - ./.travis/setup-opam.sh
+  - ./.travis/setup-mxe.sh
+  - ./.travis/setup-opam-cross-windows.sh
+script:
+  - ./.travis/build.sh
