@@ -1,3 +1,6 @@
 [submodule "SATySFi"]
 	path = SATySFi
 	url = https://github.com/gfngfn/SATySFi.git
+[submodule "opam-cross-windows"]
+	path = opam-cross-windows
+	url = https://github.com/ocaml-cross/opam-cross-windows.git
