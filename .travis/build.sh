@@ -12,6 +12,11 @@ fi
 export LDFLAGS="-L$HOME/$ARCH/lib"
 export CPPFLAGS="-I$HOME/$ARCH/include"
 
+cd SATySFi
+patch -p1 < ../files/patches/otfm-dev-null-windows.patch
+patch -p1 < ../files/patches/win32-userprofile.patch
+cd ..
+
 opam repository -y add windows ./opam-cross-windows
 opam repository -y add satysfi-aux ./opam-aux
 opam pin -y add satysfi-windows .
