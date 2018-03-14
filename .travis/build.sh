@@ -12,13 +12,18 @@ opam repository -y add satysfi-aux ./opam-aux
 opam pin -y add satysfi-windows .
 
 if [[ "$SATYSFI_TARGET" = "windows32" ]]; then
-  mkdir satysfi32
-  cp $HOME/.opam/$OCAMLVER/windows-sysroot/bin/satysfi satysfi32/satysfi.exe
-  cp /usr/lib/mxe/usr/i686-w64-mingw32.shared/bin/{libjpeg-9.dll,libgcc_s_sjlj-1.dll} satysfi32/
-  zip -r satysfi32.zip satysfi32
+  RELEASE_NAME=satysfi32
+  GCC_EXCEPTION_TYPE=sjlj
 else
-  mkdir satysfi64
-  cp $HOME/.opam/$OCAMLVER/windows-sysroot/bin/satysfi satysfi64/satysfi.exe
-  cp /usr/lib/mxe/usr/x86_64-w64-mingw32.shared/bin/{libjpeg-9.dll,libgcc_s_seh-1.dll} satysfi64/
-  zip -r satysfi64.zip satysfi64
+  RELEASE_NAME=satysfi64
+  GCC_EXCEPTION_TYPE=seh
 fi
+
+mkdir "$RELEASE_NAME"
+cp "$HOME/.opam/$OCAMLVER/windows-sysroot/bin/satysfi" "$RELEASE_NAME/satysfi.exe"
+cp "/usr/lib/mxe/usr/$ARCH.shared/bin/libjpeg-9.dll" "$RELEASE_NAME/"
+cp "/usr/lib/mxe/usr/$ARCH.shared/bin/libgcc_s_$GCC_EXCEPTION_TYPE-1.dll" "$RELEASE_NAME/"
+
+cp -r licenses "$RELEASE_NAME/"
+
+zip -r "$RELEASE_NAME.zip" "$RELEASE_NAME"
