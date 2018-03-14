@@ -26,3 +26,5 @@ deploy:
   file:
     - satysfi32.zip
     - satysfi64.zip
+  on:
+    branch: travis-test2
