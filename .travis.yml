@@ -13,6 +13,11 @@ addons:
       - libc6-dev-i386
       - gcc-multilib
       - aspcud
+      - fonts-ipaexfont-mincho
+      - fonts-ipaexfont-gothic
+      - fonts-lmodern
+      - fonts-junicode
+      - texlive-fonts-recommended
 install:
   - ./.travis/setup-opam.sh
   - ./.travis/setup-mxe.sh
