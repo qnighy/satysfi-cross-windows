@@ -1,0 +1,15 @@
+Files: ipaexm.ttf ipaexg.ttf
+Copyright: 2010-2011 Information-technology Promotion Agency, Japan.
+License: IPA-1
+
+Files: lmroman10-regular.otf lmroman10-italic.otf lmmono10-regular.otf lmsans10-regular.otf
+Copyright: 2003-2009 Bogusław Jackowski and Janusz M. Nowacki (on behalf of TeX Users Groups). Computer Modern is designed by Donald E. Knuth.
+License: GUST
+
+Files: Junicode.ttf Junicode-Italic.ttf
+Copyright: 2001-2012 Peter S. Baker <psb6m@virginia.edu>, Briery Creek Software
+License: GPL-2
+
+Files: latinmodern-math.otf
+Copyright: 2012-2014 B. Jackowski, P. Strzelczyk and P. Pianowski (on behalf of TeX Users Groups). Computer Modern is designed by Donald E. Knuth.
+License: GUST
