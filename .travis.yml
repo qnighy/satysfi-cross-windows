@@ -26,5 +26,6 @@ deploy:
   file:
     - satysfi32.zip
     - satysfi64.zip
+  skip_cleanup: true
   on:
     branch: travis-test2
