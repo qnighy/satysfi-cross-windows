@@ -19,3 +19,10 @@ install:
   - ./.travis/setup-opam-cross-windows.sh
 script:
   - ./.travis/build.sh
+deploy:
+  provider: releases
+  api_key:
+    secure: jaFq9VMscl+KPwVvE5BYVkpRZfxtrQuEQLZYEoDs/SfyeY00FBRlitUe4UB8ufbA9m/UR82bbTSVFNMoTQ01v0dqMkspGh9zoaA02TMehKPEAywRMNZ2t+XEDKhqXN3Csr5auNPeEM/oe8AzGryP4+S2+w4AUFZMZHHW6DZUxOrQaalrZEPwSmwnDiQQ+kfEPs2KNAzr30iMwyQ1gK4F40S73TDl+qirU4mz5JmpZFKsY+1pI/YBJsOg8s6weZLJWeVtYueXP1FG2qJBPNc82Lj5KB0G6Ztb73HxDWcMDwt0IrNCjPuJqVuI3B9r8FJD+oOVvUQvYVidvWungmaXKl3ZbG6Pqk5G/ZN9YEv1za3tUHr6Tyy4ZSk7UJA6ISsZTS4R1rXc9b6Pb3qmZFWbeDjSuaoM9YWhxsDP0pk8A7jwhR4Y25DDNLLRVDRkTPVmVfa3u97CRXLnDIT8mF9bMLYxhaEM+4fPgS7B+FSTKRXjK3rtmxja5hWwq5DMYbT/b9MK7MOoYQkGbA8vRlamk8gg829owTgM5nVgdpWR82FnAnEHUu1DDlwEusGBxJecKC0oIAdWIfwoavECC6qyCbyiRppMPgovA8PwDmbIe1OpvCYQmXOCbVgOHudVY0PkfnemPbPP+K7VeHYlBLPM/ZiORLa04yzwgk6EJ/x1Xx8=
+  file:
+    - satysfi32.zip
+    - satysfi64.zip
