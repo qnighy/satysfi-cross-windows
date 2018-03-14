@@ -35,7 +35,7 @@ See [opam-cross-windows](https://github.com/ocaml-cross/opam-cross-windows) for 
 ```sh
 opam repository add windows git://github.com/ocaml-cross/opam-cross-windows
 TOOLPREF64=/usr/lib/mxe/usr/bin/x86_64-w64-mingw32.static- opam install conf-gcc-windows64
-opam install ocaml-windows
+opam install opam-installer ocaml-windows
 ```
 
 # Build SATySFi and its dependencies
