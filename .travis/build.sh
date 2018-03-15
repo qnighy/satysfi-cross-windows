@@ -42,3 +42,8 @@ cp \
 cp -r SATySFi/demo "$RELEASE_NAME/"
 
 zip -r "$RELEASE_NAME.zip" "$RELEASE_NAME"
+
+cd installer
+makensis $RELEASE_NAME.nsi
+mv $RELEASE_NAME-installer.exe ..
+cd ..
