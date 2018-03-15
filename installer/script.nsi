@@ -7,11 +7,9 @@ Outfile "../${RELEASE_NAME}-installer.exe"
     InstallDir "$PROGRAMFILES\SATySFi"
 !endif
 
-LicenseData "../licenses/LGPL-3.0"
-
 !include "${NSISDIR}\Contrib\Modern UI 2\MUI2.nsh"
 
-!insertmacro MUI_PAGE_LICENSE "../licenses/LGPL-3.0"
+!insertmacro MUI_PAGE_LICENSE "lgpl-3.0.txt"
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
