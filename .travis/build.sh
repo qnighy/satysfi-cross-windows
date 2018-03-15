@@ -42,3 +42,5 @@ cp \
 cp -r SATySFi/demo "$RELEASE_NAME/"
 
 zip -r "$RELEASE_NAME.zip" "$RELEASE_NAME"
+
+installer/make-installer.sh "$RELEASE_NAME"
