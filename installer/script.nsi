@@ -14,6 +14,8 @@ Outfile "../${RELEASE_NAME}-installer.exe"
 
 !include "FileFunc.nsh"
 
+RequestExecutionLevel user
+
 !define MULTIUSER_INSTALLMODE_INSTDIR "SATySFi"
 !define MULTIUSER_EXECUTIONLEVEL Highest
 !define MULTIUSER_MUI
