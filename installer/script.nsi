@@ -1,5 +1,12 @@
 Name "SATySFi for Windows"
 Outfile "../${RELEASE_NAME}-installer.exe"
+!if ${RELEASE_NAME} == "satysfi64"
+!define UNINST_KEY \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\SATySFi64"
+!else
+!define UNINST_KEY \
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\SATySFi32"
+!endif
 
 !if ${RELEASE_NAME} == "satysfi64"
 !define MULTIUSER_USE_PROGRAMFILES64
@@ -26,6 +33,15 @@ Outfile "../${RELEASE_NAME}-installer.exe"
 
 Section
     SetOutPath $INSTDIR
+!if ${RELEASE_NAME} == "satysfi64"
+    WriteRegStr SHCTX "${UNINST_KEY}" "DisplayName" "SATySFi for Windows (64bit)"
+!else
+    WriteRegStr SHCTX "${UNINST_KEY}" "DisplayName" "SATySFi for Windows (32bit)"
+!endif
+    WriteRegStr SHCTX "${UNINST_KEY}" "UninstallString" \
+        "$\"$INSTDIR\uninstall.exe$\" /$MultiUser.InstallMode"
+    WriteRegStr SHCTX "${UNINST_KEY}" "QuietUninstallString" \
+        "$\"$INSTDIR\uninstall.exe$\" /$MultiUser.InstallMode /S"
     WriteUninstaller "$INSTDIR\uninstall.exe"
     File /r "../${RELEASE_NAME}/*"
 SectionEnd
@@ -34,6 +50,7 @@ Section "uninstall"
     !include "remove-list.nsh"
     Delete "$INSTDIR\uninstall.exe"
     RmDir "$INSTDIR"
+    DeleteRegKey SHCTX "${UNINST_KEY}"
 SectionEnd
 
 Function .onInit
