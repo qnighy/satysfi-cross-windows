@@ -2,14 +2,19 @@ Name "SATySFi for Windows"
 Outfile "../${RELEASE_NAME}-installer.exe"
 
 !if ${RELEASE_NAME} == "satysfi64"
-    InstallDir "$PROGRAMFILES64\SATySFi"
-!else
-    InstallDir "$PROGRAMFILES\SATySFi"
+!define MULTIUSER_USE_PROGRAMFILES64
 !endif
 
-!include "${NSISDIR}\Contrib\Modern UI 2\MUI2.nsh"
+!define MULTIUSER_INSTALLMODE_INSTDIR "SATySFi"
+!define MULTIUSER_EXECUTIONLEVEL Highest
+!define MULTIUSER_MUI
+!define MULTIUSER_INSTALLMODE_COMMANDLINE
+# MULTIUSER_USE_PROGRAMFILES64 is not supported in nsis < 3.0
+!include MultiUser-patched.nsh
+!include MUI2.nsh
 
 !insertmacro MUI_PAGE_LICENSE "lgpl-3.0.txt"
+!insertmacro MULTIUSER_PAGE_INSTALLMODE
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
@@ -31,3 +36,10 @@ Section "uninstall"
     RmDir "$INSTDIR"
 SectionEnd
 
+Function .onInit
+  !insertmacro MULTIUSER_INIT
+FunctionEnd
+
+Function un.onInit
+  !insertmacro MULTIUSER_UNINIT
+FunctionEnd
