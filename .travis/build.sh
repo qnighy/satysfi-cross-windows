@@ -26,7 +26,7 @@ cp "/usr/lib/mxe/usr/$ARCH.shared/bin/libgcc_s_$GCC_EXCEPTION_TYPE-1.dll" "$RELE
 
 cp -r licenses "$RELEASE_NAME/"
 cp -r SATySFi/lib-satysfi "$RELEASE_NAME/"
-rm "$RELEASE_NAME/lib-satysfi/dist/fonts/.gitkeep"
+find "$RELEASE_NAME/lib-satysfi" -name '.git*' -exec rm '{}' '+'
 cp \
   /usr/share/fonts/opentype/ipaexfont-mincho/ipaexm.ttf \
   /usr/share/fonts/opentype/ipaexfont-gothic/ipaexg.ttf \
