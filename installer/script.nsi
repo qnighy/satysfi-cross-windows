@@ -12,6 +12,8 @@ Outfile "../${RELEASE_NAME}-installer.exe"
 !define MULTIUSER_USE_PROGRAMFILES64
 !endif
 
+!include "FileFunc.nsh"
+
 !define MULTIUSER_INSTALLMODE_INSTDIR "SATySFi"
 !define MULTIUSER_EXECUTIONLEVEL Highest
 !define MULTIUSER_MUI
@@ -44,6 +46,10 @@ Section
         "$\"$INSTDIR\uninstall.exe$\" /$MultiUser.InstallMode /S"
     WriteUninstaller "$INSTDIR\uninstall.exe"
     File /r "../${RELEASE_NAME}/*"
+
+    ${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2
+    IntFmt $0 "0x%08X" $0
+    WriteRegDWORD SHCTX "${UNINST_KEY}" "EstimatedSize" "$0"
 SectionEnd
 
 Section "uninstall"
