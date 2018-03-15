@@ -39,4 +39,6 @@ cp \
   /usr/share/texlive/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf \
   "$RELEASE_NAME/lib-satysfi/dist/fonts/"
 
+cp -r SATySFi/demo "$RELEASE_NAME/"
+
 zip -r "$RELEASE_NAME.zip" "$RELEASE_NAME"
