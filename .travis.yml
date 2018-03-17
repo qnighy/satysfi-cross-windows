@@ -25,6 +25,7 @@ install:
   - ./.travis/setup-opam-cross-windows.sh
 script:
   - ./.travis/build.sh
+  - bash -xv ./package.sh
 deploy:
   - provider: releases
     api_key:

@@ -48,3 +48,10 @@ opam pin add satysfi-windows .
 ```
 
 You can find the generated binary in `~/.opam/4.06.1/windows-sysroot/bin/satysfi`.
+
+# Package built artifacts
+
+```
+sudo apt install fonts-ipaexfont-mincho fonts-ipaexfont-gothic fonts-lmodern fonts-junicode texlive-fonts-recommended nsis
+./package.sh
+```
