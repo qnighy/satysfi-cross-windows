@@ -13,6 +13,7 @@ Outfile "../${RELEASE_NAME}-installer.exe"
 !endif
 
 !include "FileFunc.nsh"
+!include "EnvVarUpdate-patched.nsh"
 
 RequestExecutionLevel user
 
@@ -35,9 +36,6 @@ RequestExecutionLevel user
 
 !insertmacro MUI_LANGUAGE "English"
 
-!define hklm_all_users     'HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"'
-!define hkcu_current_user  'HKCU "Environment"'
-
 Section
   SetOutPath $INSTDIR
 !if ${RELEASE_NAME} == "satysfi64"
@@ -51,8 +49,10 @@ Section
       "$\"$INSTDIR\uninstall.exe$\" /$MultiUser.InstallMode /S"
   ${If} $MultiUser.InstallMode == AllUsers
     WriteRegStr ${hklm_all_users} "SATYSFI_RUNTIME" "$INSTDIR\lib"
+    ${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR"
   ${Else}
     WriteRegStr ${hkcu_current_user} "SATYSFI_RUNTIME" "$INSTDIR\lib"
+    ${EnvVarUpdate} $0 "PATH" "A" "HKCU" "$INSTDIR"
   ${EndIf}
   WriteUninstaller "$INSTDIR\uninstall.exe"
   File /r "../${RELEASE_NAME}/*"
@@ -69,11 +69,13 @@ Section "uninstall"
   Delete "$INSTDIR\uninstall.exe"
   RmDir "$INSTDIR"
   ${If} $MultiUser.InstallMode == AllUsers
+    ${un.EnvVarUpdate} $0 "PATH" "R" "HKLM" "$INSTDIR"
     ReadRegStr $SATYSFI_RUNTIME ${hklm_all_users} "SATYSFI_RUNTIME"
     ${If} $SATYSFI_RUNTIME == "$INSTDIR\lib"
       DeleteRegValue ${hklm_all_users} "SATYSFI_RUNTIME"
     ${EndIf}
   ${Else}
+    ${un.EnvVarUpdate} $0 "PATH" "R" "HKCU" "$INSTDIR"
     ReadRegStr $SATYSFI_RUNTIME ${hkcu_current_user} "SATYSFI_RUNTIME"
     ${If} $SATYSFI_RUNTIME == "$INSTDIR\lib"
       DeleteRegValue ${hkcu_current_user} "SATYSFI_RUNTIME"
