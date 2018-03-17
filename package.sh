@@ -20,8 +20,8 @@ cp "$CROSS_PREFIX/bin/libjpeg-9.dll" "$RELEASE_NAME/"
 cp "$CROSS_PREFIX/bin/libgcc_s_$GCC_EXCEPTION_TYPE-1.dll" "$RELEASE_NAME/"
 
 cp -r licenses "$RELEASE_NAME/"
-cp -r SATySFi/lib-satysfi "$RELEASE_NAME/"
-find "$RELEASE_NAME/lib-satysfi" -name '.git*' -exec rm '{}' '+'
+cp -r SATySFi/lib-satysfi "$RELEASE_NAME/lib"
+find "$RELEASE_NAME/lib" -name '.git*' -exec rm '{}' '+'
 cp \
   /usr/share/fonts/opentype/ipaexfont-mincho/ipaexm.ttf \
   /usr/share/fonts/opentype/ipaexfont-gothic/ipaexg.ttf \
@@ -32,7 +32,7 @@ cp \
   /usr/share/fonts/truetype/junicode/Junicode.ttf \
   /usr/share/fonts/truetype/junicode/Junicode-Italic.ttf \
   /usr/share/texlive/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf \
-  "$RELEASE_NAME/lib-satysfi/dist/fonts/"
+  "$RELEASE_NAME/lib/dist/fonts/"
 
 cp -r SATySFi/demo "$RELEASE_NAME/"
 
