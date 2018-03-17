@@ -36,29 +36,29 @@ RequestExecutionLevel user
 !insertmacro MUI_LANGUAGE "English"
 
 Section
-    SetOutPath $INSTDIR
+  SetOutPath $INSTDIR
 !if ${RELEASE_NAME} == "satysfi64"
-    WriteRegStr SHCTX "${UNINST_KEY}" "DisplayName" "SATySFi for Windows (64bit)"
+  WriteRegStr SHCTX "${UNINST_KEY}" "DisplayName" "SATySFi for Windows (64bit)"
 !else
-    WriteRegStr SHCTX "${UNINST_KEY}" "DisplayName" "SATySFi for Windows (32bit)"
+  WriteRegStr SHCTX "${UNINST_KEY}" "DisplayName" "SATySFi for Windows (32bit)"
 !endif
-    WriteRegStr SHCTX "${UNINST_KEY}" "UninstallString" \
-        "$\"$INSTDIR\uninstall.exe$\" /$MultiUser.InstallMode"
-    WriteRegStr SHCTX "${UNINST_KEY}" "QuietUninstallString" \
-        "$\"$INSTDIR\uninstall.exe$\" /$MultiUser.InstallMode /S"
-    WriteUninstaller "$INSTDIR\uninstall.exe"
-    File /r "../${RELEASE_NAME}/*"
+  WriteRegStr SHCTX "${UNINST_KEY}" "UninstallString" \
+      "$\"$INSTDIR\uninstall.exe$\" /$MultiUser.InstallMode"
+  WriteRegStr SHCTX "${UNINST_KEY}" "QuietUninstallString" \
+      "$\"$INSTDIR\uninstall.exe$\" /$MultiUser.InstallMode /S"
+  WriteUninstaller "$INSTDIR\uninstall.exe"
+  File /r "../${RELEASE_NAME}/*"
 
-    ${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2
-    IntFmt $0 "0x%08X" $0
-    WriteRegDWORD SHCTX "${UNINST_KEY}" "EstimatedSize" "$0"
+  ${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2
+  IntFmt $0 "0x%08X" $0
+  WriteRegDWORD SHCTX "${UNINST_KEY}" "EstimatedSize" "$0"
 SectionEnd
 
 Section "uninstall"
-    !include "remove-list.nsh"
-    Delete "$INSTDIR\uninstall.exe"
-    RmDir "$INSTDIR"
-    DeleteRegKey SHCTX "${UNINST_KEY}"
+  !include "remove-list.nsh"
+  Delete "$INSTDIR\uninstall.exe"
+  RmDir "$INSTDIR"
+  DeleteRegKey SHCTX "${UNINST_KEY}"
 SectionEnd
 
 Function .onInit
