@@ -27,6 +27,7 @@ RequestExecutionLevel user
 
 !insertmacro MUI_PAGE_LICENSE "lgpl-3.0.txt"
 !insertmacro MULTIUSER_PAGE_INSTALLMODE
+!insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
@@ -36,7 +37,8 @@ RequestExecutionLevel user
 
 !insertmacro MUI_LANGUAGE "English"
 
-Section
+Section "SATySFi" MainProgram
+  SectionIn RO
   SetOutPath $INSTDIR
 !if ${RELEASE_NAME} == "satysfi64"
   WriteRegStr SHCTX "${UNINST_KEY}" "DisplayName" "SATySFi for Windows (64bit)"
@@ -49,10 +51,8 @@ Section
       "$\"$INSTDIR\uninstall.exe$\" /$MultiUser.InstallMode /S"
   ${If} $MultiUser.InstallMode == AllUsers
     WriteRegStr ${hklm_all_users} "SATYSFI_RUNTIME" "$INSTDIR\lib"
-    ${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR"
   ${Else}
     WriteRegStr ${hkcu_current_user} "SATYSFI_RUNTIME" "$INSTDIR\lib"
-    ${EnvVarUpdate} $0 "PATH" "A" "HKCU" "$INSTDIR"
   ${EndIf}
   WriteUninstaller "$INSTDIR\uninstall.exe"
   File /r "../${RELEASE_NAME}/*"
@@ -60,6 +60,14 @@ Section
   ${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2
   IntFmt $0 "0x%08X" $0
   WriteRegDWORD SHCTX "${UNINST_KEY}" "EstimatedSize" "$0"
+SectionEnd
+
+Section "Add SATySFi to PATH" PathAddition
+  ${If} $MultiUser.InstallMode == AllUsers
+    ${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR"
+  ${Else}
+    ${EnvVarUpdate} $0 "PATH" "A" "HKCU" "$INSTDIR"
+  ${EndIf}
 SectionEnd
 
 Section "uninstall"
@@ -83,6 +91,14 @@ Section "uninstall"
   ${EndIf}
   DeleteRegKey SHCTX "${UNINST_KEY}"
 SectionEnd
+
+LangString DESC_MainProgram ${LANG_ENGLISH} "Files required by SATySFi."
+LangString DESC_PathAddition ${LANG_ENGLISH} "Add SATySFi to %PATH% environment variable."
+
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+  !insertmacro MUI_DESCRIPTION_TEXT ${MainProgram} $(DESC_MainProgram)
+  !insertmacro MUI_DESCRIPTION_TEXT ${PathAddition} $(DESC_PathAddition)
+!insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 Function .onInit
   !insertmacro MULTIUSER_INIT
