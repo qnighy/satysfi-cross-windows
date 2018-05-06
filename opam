@@ -24,9 +24,7 @@ remove: [
 depends: [
   "ocaml-windows"
   "batteries-windows"
-# Issue #46: we temporarily pin camlimages to avoid Graphics-related problems.
-# See https://github.com/ocaml/dune/issues/563 for details.
-  "camlimages-windows" {< "5.0.0"}
+  "camlimages-windows" {>= "5.0.1"}
   "camlpdf-windows" {= "2.2.1+satysfi"}
   "core_kernel-windows" {>= "v0.10.0"}
   "depext"
