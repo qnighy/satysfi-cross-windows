@@ -1,0 +1,26 @@
+opam-version: "1.2"
+maintainer: "Takuma Ishikawa <nekketsuuu@gmail.com>"
+homepage: "https://github.com/gfngfn/otfm"
+authors: [
+  "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+  "gfngfn"
+]
+dev-repo: "https://github.com/gfngfn/otfm.git"
+bug-reports: "https://github.com/gfngfn/otfm/issues"
+tags: [ "OpenType" "ttf" "font" "decoder" "graphics" "org:erratique" ]
+license: "ISC"
+available: [ ocaml-version >= "4.01.0" ]
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+  "topkg" {build}
+  "result-windows"
+  "uchar-windows"
+  "uutf-windows" {>= "1.0.0"}
+]
+build: [
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--toolchain" "windows"]
+]
+install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "otfm.install"]]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "otfm"]]

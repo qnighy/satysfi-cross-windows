@@ -1,0 +1,49 @@
+diff --git a/OCamlMakefile b/OCamlMakefile
+index a3078e9..e718995 100755
+--- a/OCamlMakefile
++++ b/OCamlMakefile
+@@ -112,7 +112,7 @@ endif
+ 
+ ####################  variables depending on your OCaml-installation
+ 
+-SYSTEM := $(shell ocamlc -config 2>/dev/null | grep system | sed 's/system: //')
++SYSTEM := $(shell ocamlfind ocamlc -config 2>/dev/null | grep system | sed 's/system: //')
+     # This may be
+     # - mingw
+     # - mingw64
+@@ -387,7 +387,7 @@ export OCAMLMAKEFILE
+ 
+ ifndef OCAMLLIBPATH
+   OCAMLLIBPATH := \
+-    $(shell $(OCAMLC) 2>/dev/null -where || echo /usr/local/lib/ocaml)
++    $(shell ocamlfind $(OCAMLC) 2>/dev/null -where || echo /usr/local/lib/ocaml)
+ endif
+ export OCAMLLIBPATH
+ 
+@@ -987,7 +987,7 @@ $(DLLSONAME):		$(OBJ_LINK)
+ 			-Wl,--enable-auto-import
+ else
+ $(DLLSONAME):		$(OBJ_LINK)
+-			$(OCAMLMKLIB) $(INCFLAGS) $(CLIBFLAGS) \
++			$(OCAMLFIND) $(OCAMLMKLIB) $(INCFLAGS) $(CLIBFLAGS) \
+ 				-o $(CLIB_BASE) $(OBJ_LINK) $(CLIBS:%=-l%) \
+ 				$(CFRAMEWORKS:%=-framework %) \
+ 				$(OCAMLMKLIB_FLAGS)
+@@ -1001,7 +1001,7 @@ $(DLLSONAME):		$(OBJ_LINK)
+ 
+ else
+ $(DLLSONAME):		$(OBJ_LINK)
+-			$(OCAMLMKLIB) $(INCFLAGS) $(CLIBFLAGS) \
++			$(OCAMLFIND) $(OCAMLMKLIB) $(INCFLAGS) $(CLIBFLAGS) \
+ 				-o $(CLIB_BASE) $(OBJ_LINK) $(CLIBS:%=-l%) $(CFRAMEWORKS:%=-framework %) \
+ 				$(OCAMLMKLIB_FLAGS)
+ endif
+@@ -1129,7 +1129,7 @@ endif
+ 			$(QUIET)if [ $(NOIDLHEADER) ]; then touch $*.h; fi
+ 
+ %.$(EXT_OBJ):	%.c
+-			$(OCAMLC) -c -cc "$(CC)" -ccopt "$(CFLAGS) \
++			$(OCAMLFIND) $(OCAMLC) -c -cc "$(CC)" -ccopt "$(CFLAGS) \
+ 				$(CPPFLAGS) $(CPPFLAGS_WIN32) \
+ 				$(CFLAGS_WIN32) $(CINCFLAGS) $(CFLAG_O)$@ " $<
+ 

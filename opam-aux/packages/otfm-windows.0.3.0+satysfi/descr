@@ -1,0 +1,17 @@
+OpenType font decoder for OCaml
+Release 0.3.0+satysfi by @gfngfn
+
+Otfm is originally published by Daniel Bünzli.
+This version is a fork of it for [SATySFi].
+
+Otfm is an in-memory decoder for the OpenType font data format. It
+provides low-level access to font tables and functions to decode some
+of them.
+
+Otfm is made of a single module and depends on [Uutf]. It is distributed 
+under the ISC license.
+
+
+  [SATySFi]: https://github.com/gfngfn/SATySFi
+  [Uutf]: http://erratique.ch/software/uutf
+

@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 91c1c16..07b0aaa 100644
+--- a/Makefile
++++ b/Makefile
+@@ -19,7 +19,7 @@ OCAMLNCFLAGS = -g -unsafe-string -annot -w -3
+ OCAMLBCFLAGS = -g -unsafe-string -annot -w -3
+ OCAMLLDFLAGS = -g
+ 
+-all : native-code-library byte-code-library htdoc
++all : native-code-library byte-code-library
+ 
+ clean ::
+ 	rm -rf doc foo foo2 out.pdf out2.pdf

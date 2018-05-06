@@ -4,3 +4,6 @@
 [submodule "opam-cross-windows"]
 	path = opam-cross-windows
 	url = https://github.com/ocaml-cross/opam-cross-windows.git
+[submodule "satysfi-external-repo"]
+	path = satysfi-external-repo
+	url = https://github.com/gfngfn/satysfi-external-repo.git

@@ -23,20 +23,21 @@ remove: [
 ]
 depends: [
   "ocaml-windows"
-  "depext"
-  "ocamlfind"
-  "ocamlbuild-windows" {build}
-  "menhir"
-  "menhir-windows"
-  "ppx_deriving"
-  "ppx_deriving-windows"
-  "uutf-windows"
-  "result-windows"
-  "core_kernel-windows" {>= "v0.10.0"}
   "batteries-windows"
-  "yojson-windows"
 # Issue #46: we temporarily pin camlimages to avoid Graphics-related problems.
 # See https://github.com/ocaml/dune/issues/563 for details.
   "camlimages-windows" {< "5.0.0"}
+  "camlpdf-windows" {= "2.2.1+satysfi"}
+  "core_kernel-windows" {>= "v0.10.0"}
+  "depext"
+  "menhir"
+  "menhir-windows"
+  "ocamlbuild-windows" {build}
+  "ocamlfind" {build}
+  "otfm-windows" {= "0.3.0+satysfi"}
+  "ppx_deriving"
+  "ppx_deriving-windows"
+  "uutf-windows"
+  "yojson-windows"
 ]
 available: [ ocaml-version >= "4.06.0" ]
