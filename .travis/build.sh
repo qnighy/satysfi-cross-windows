@@ -5,7 +5,6 @@ set -uexv
 
 cd SATySFi
 patch -p1 < ../files/patches/otfm-dev-null-windows.patch
-patch -p1 < ../files/patches/win32-root-dirs.patch
 cd ..
 
 opam repository -y add satysfi-aux ./opam-aux
