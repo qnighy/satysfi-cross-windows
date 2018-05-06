@@ -1,0 +1,10 @@
+diff -r 1611545463f4 config/jbuild
+--- a/config/jbuild	Mon Apr 02 13:52:57 2018 +0900
++++ b/config/jbuild	Sun May 06 22:33:15 2018 +0900
+@@ -25,5 +25,4 @@
+ 	    xpm_c_flags.sexp
+ 	    xpm_c_library_flags.sexp
+ 	    ))
+-  (deps (ciconfig.exe))
+-  (action (run ${<}))))
++  (action (run ./ciconfig.exe))))
