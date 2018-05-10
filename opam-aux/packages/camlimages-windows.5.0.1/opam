@@ -10,6 +10,7 @@ dev-repo: "hg://https://bitbucket.org/camlspotter/camlimages"
 patches: [
   "patches/tweak-ciconfig-dependency.patch"
   "patches/ocamlfind-toolchain.patch"
+  "patches/disable-by-cc.patch"
 ]
 build: [
   ["jbuilder" "build" "config/ciconfig.exe"]

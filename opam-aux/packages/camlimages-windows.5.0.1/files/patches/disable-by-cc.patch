@@ -1,0 +1,39 @@
+diff -r 1611545463f4 config/ciconfig.ml
+--- a/config/ciconfig.ml	Mon Apr 02 13:52:57 2018 +0900
++++ b/config/ciconfig.ml	Thu May 10 22:23:10 2018 +0900
+@@ -14,22 +14,18 @@
+ 
+ let gif = find_library
+     [ by_pkg_config "libgif" 
+-    ; by_cc ~c_flags:[] ~link_flags:["-lgif"] ~headers:["gif_lib.h"] ~functions:["DGifOpenFileName"] 
+     ]
+ 
+ let jpeg = find_library
+     [ by_pkg_config "libjpeg"
+-    ; by_cc ~c_flags:[] ~link_flags:["-ljpeg"] ~headers:["jpeglib.h"] ~functions:["jpeg_read_header"]
+     ]
+ 
+ let png = find_library
+     [ by_pkg_config "libpng" 
+-    ; by_cc ~c_flags:[] ~link_flags:["-lpng"; "-lz"] ~headers:["png.h"] ~functions:["png_create_read_struct"] 
+     ]
+ 
+ let tiff = find_library
+     [ by_pkg_config "libtiff-4" 
+-    ; by_cc ~c_flags:[] ~link_flags:["-ltiff"] ~headers:["tiff.h"] ~functions:["TiffOpen"]
+     ]
+ 
+ let freetype = find_library
+@@ -37,12 +33,10 @@
+ 
+ let exif = find_library
+     [ by_pkg_config "libexif" 
+-    ; by_cc ~c_flags:[] ~link_flags:["-lexif"] ~headers:["exif-data.h"] ~functions:["exif_data_load_data"]
+     ]
+ 
+ let xpm = find_library
+     [ by_pkg_config "xpm"
+-    ; by_cc ~c_flags:[] ~link_flags:["-lXpm"] ~headers:["X11/xpm.h"] ~functions:["XpmReadFileToXpmImage"]
+     ]
+ 
+ let rgb_txt = find_file "rgb.txt"

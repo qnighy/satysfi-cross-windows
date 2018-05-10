@@ -1,6 +1,6 @@
 diff -r 1611545463f4 graphics/jbuild
 --- a/graphics/jbuild	Mon Apr 02 13:52:57 2018 +0900
-+++ b/graphics/jbuild	Sun May 06 22:33:15 2018 +0900
++++ b/graphics/jbuild	Wed May 09 21:12:10 2018 +0900
 @@ -21,7 +21,7 @@
  
  let graphics_exists =
