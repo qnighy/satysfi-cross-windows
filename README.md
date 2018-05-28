@@ -50,7 +50,6 @@ If you want to compile SATySFi for Windows by your own, see `build-instructions.
 
 1. SATySFi for Windowsを[リリースページ](https://github.com/qnighy/satysfi-cross-windows/releases)からダウンロードする。
 2. アーカイブを展開するか、インストーラを実行する。
-3. `lib-satysfi` ディレクトリを `%userprofile\.satysfi` にコピーする。 `%userprofile%` は通常、 `C:\Users\名前` のようなディレクトリを指しています。
 3. インストーラを使わなかった場合は以下のどちらかをする。
   - 環境変数 `%SATYSFI_RUNTIME%` を `適切な\パス\satysfi\lib` のように設定する。
   - `satysfi\lib` ディレクトリを `%userprofile%\.satysfi` にコピーする。 `%userprofile%` は通常、 `C:\Users\名前` のようなディレクトリを指しています。
