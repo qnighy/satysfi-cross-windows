@@ -16,10 +16,9 @@ cp \
   /usr/share/fonts/truetype/junicode/Junicode.ttf \
   /usr/share/fonts/truetype/junicode/Junicode-Bold.ttf \
   /usr/share/fonts/truetype/junicode/Junicode-Italic.ttf \
-  /usr/share/texmf/fonts/opentype/public/lm-math/latinmodern-math.otf \
+  /usr/share/texlive/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf \
   /usr/share/texlive/texmf-dist/fonts/opentype/public/Asana-Math/Asana-Math.otf \
   "$HOME/.satysfi/dist/fonts/"
-  # /usr/share/texlive/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf \
 
 mv "$HOME/.satysfi/dist/fonts/Asana-Math.otf" "$HOME/.satysfi/dist/fonts/Asana-math.otf"
 
