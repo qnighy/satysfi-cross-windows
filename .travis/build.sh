@@ -4,4 +4,8 @@ set -uexv
 . .travis/common.sh
 
 opam repository -y add satysfi-aux ./opam-aux
-opam pin -y add satysfi-windows .
+if [[ "$SATYSFI_TARGET" = "native" ]]; then
+  opam pin -y add satysfi ./SATySFi
+else
+  opam pin -y add satysfi-windows .
+fi
