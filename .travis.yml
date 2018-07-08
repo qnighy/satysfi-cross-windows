@@ -18,6 +18,7 @@ addons:
       - fonts-lmodern
       - fonts-junicode
       - texlive-fonts-recommended
+      - texlive-fonts-extra
       - nsis
 install:
   - ./.travis/setup-opam.sh
