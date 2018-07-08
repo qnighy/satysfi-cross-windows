@@ -3,6 +3,10 @@ set -uexv
 
 . .travis/common.sh
 
+if [[ "$SATYSFI_TARGET" = "native" ]]; then
+  exit
+fi
+
 opam repository -y add windows ./opam-cross-windows
 opam pin -y add topkg https://github.com/whitequark/topkg.git
 
